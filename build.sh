@@ -22,9 +22,9 @@ function CheckoutVersionAndPath() {
 }
 
 function BuildGO() {
-    GOOS=linux GOARCH=arm go build -o $BUILDROOT/target/keybase -tags production github.com/keybase/client/go/keybase
-    GOOS=linux GOARCH=arm go build -o $BUILDROOT/target/kbfsfuse -tags production github.com/keybase/client/go/kbfs/kbfsfuse
-    GOOS=linux GOARCH=arm go build -o $BUILDROOT/target/git-remote-keybase -tags production github.com/keybase/client/go/kbfs/kbfsgit/git-remote-keybase
+    CGO_ENABLED=1 GOOS=linux GOARCH=arm go build -o $BUILDROOT/target/keybase -tags production github.com/keybase/client/go/keybase
+    CGO_ENABLED=1 GOOS=linux GOARCH=arm go build -o $BUILDROOT/target/kbfsfuse -tags production github.com/keybase/client/go/kbfs/kbfsfuse
+    CGO_ENABLED=1 GOOS=linux GOARCH=arm go build -o $BUILDROOT/target/git-remote-keybase -tags production github.com/keybase/client/go/kbfs/kbfsgit/git-remote-keybase
 }
 
 function BuildGUI() {
