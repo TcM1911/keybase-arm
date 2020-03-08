@@ -11,7 +11,7 @@ fi
 
 
 function DownloadKeybase() {
-    GOOS=linux GOARCH=arm go get -u -v $KBCLIENT_PATH/go/...
+    GOOS=linux GOARCH=arm go get -u $KBCLIENT_PATH/go/...
 }
 
 function CheckoutVersionAndPath() {
