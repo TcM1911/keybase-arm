@@ -9,6 +9,7 @@ os:
   - linux
 
 before_install:
+  - nvm use v11.0.0
   - npm install -g yarn
 
 script:
