@@ -4,7 +4,7 @@ KBCLIENT_PATH="github.com/keybase/client"
 BUILDROOT=$(pwd)
 
 if [ -z "$1" ]; then
-   VERSION=$(shell git describe --tags 2> /dev/null || git rev-list -1 HEAD)
+   VERSION=$(cat $BUILDROOT/latest-version)
 else
    VERSION="$1"
 fi
@@ -16,7 +16,7 @@ function DownloadKeybase() {
 
 function CheckoutVersionAndPath() {
     cd $GOPATH/src/$KBCLIENT_PATH && \
-        git checkout $VERSION && \
+        git checkout "v$VERSION" && \
         git apply $BUILDROOT/keybase-electron-mirror.patch && \
         cd $BUILDROOT
 }
