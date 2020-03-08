@@ -32,7 +32,7 @@ function BuildGUI() {
     cd $GOPATH/src/$KBCLIENT_PATH/shared && \
        yarn install && \
        yarn run package -- --platform linux --arch armv7l --appVersion $VERSION && \
-       cp -rv $GOPATH/src/$KBCLIENT_PATH/shared/desktop/release/linux-armv7l/Keybase-linux-armv7l $BUILDROOT/target/.
+       cp -r $GOPATH/src/$KBCLIENT_PATH/shared/desktop/release/linux-armv7l/Keybase-linux-armv7l $BUILDROOT/target/.
        cd $BUILDROOT
 }
 
