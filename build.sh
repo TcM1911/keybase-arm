@@ -2,7 +2,6 @@
 
 KBCLIENT_PATH="github.com/keybase/client"
 BUILDROOT=$(pwd)
-GOOPTS="GOARCH=arm"
 
 if [ -z "$1" ]; then
    VERSION=$(cat $BUILDROOT/latest-version)
@@ -23,9 +22,9 @@ function CheckoutVersionAndPath() {
 }
 
 function BuildGO() {
-    $GOOPTS go build -o $BUILDROOT/target/keybase -tags production github.com/keybase/client/go/keybase
-    $GOOPTS go build -o $BUILDROOT/target/kbfsfuse -tags production github.com/keybase/client/go/kbfs/kbfsfuse
-    $GOOPTS go build -o $BUILDROOT/target/git-remote-keybase -tags production github.com/keybase/client/go/kbfs/kbfsgit/git-remote-keybase
+    GOARCH=arm go build -o $BUILDROOT/target/keybase -tags production github.com/keybase/client/go/keybase
+    GOARCH=arm go build -o $BUILDROOT/target/kbfsfuse -tags production github.com/keybase/client/go/kbfs/kbfsfuse
+    GOARCH=arm go build -o $BUILDROOT/target/git-remote-keybase -tags production github.com/keybase/client/go/kbfs/kbfsgit/git-remote-keybase
 }
 
 function BuildGUI() {
