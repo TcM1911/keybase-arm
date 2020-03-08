@@ -1,0 +1,13 @@
+diff --git a/shared/desktop/package.desktop.tsx b/shared/desktop/package.desktop.tsx
+index d921e3e7c9..06efc5fd98 100644
+--- a/shared/desktop/package.desktop.tsx
++++ b/shared/desktop/package.desktop.tsx
+@@ -54,7 +54,7 @@ const packagerOpts: any = {
+   dir: desktopPath('./build'),
+   download: {
+     mirrorOptions: {
+-      mirror: 'https://kbelectron.keybase.pub/electron-download/',
++      mirror: 'https://github.com/electron/electron/releases/download/',
+     },
+   },
+   electronVersion: 0,
