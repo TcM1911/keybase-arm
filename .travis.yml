@@ -2,14 +2,12 @@ language: go
 go:
   - "1.14.x"
 
-node_js:
-  - "11"
-
 os:
   - linux
 
 before_install:
-  - nvm use v11.0.0
+  - nvm install 12
+  - nvm use 12
   - npm install -g yarn
 
 script:
