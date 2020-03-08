@@ -31,16 +31,18 @@ function BuildGUI() {
     cd $GOPATH/src/$KBCLIENT_PATH/shared && \
        yarn install && \
        yarn run package -- --platform linux --arch armv7l --appVersion $VERSION && \
-       cp -r $GOPATH/src/$KBCLIENT_PATH/shared/desktop/release/linux-armv7l/Keybase-linux-armv7l $BUILDROOT/target/.
+       cp -rv $GOPATH/src/$KBCLIENT_PATH/shared/desktop/release/linux-armv7l/Keybase-linux-armv7l $BUILDROOT/target/.
        cd $BUILDROOT
 }
 
 function CopyExtras() {
-    cp $GOPATH/src/$KBCLIENT_PATH/packaging/linux/{run_keybase,crypto_squirrel.txt,systemd/kbfs.service,systemd/keybase.gui.service,systemd/keybase.service} target/.
+    cp -v $GOPATH/src/$KBCLIENT_PATH/packaging/linux/{run_keybase,crypto_squirrel.txt,systemd/kbfs.service,systemd/keybase.gui.service,systemd/keybase.service} $BUILDROOT/target/.
 }
 
 function Package() {
     cd $BUILDROOT
+    echo "Packaging:"
+    ls target
     mv target keybase-linux-arm-$VERSION
     tar cfvz keybase-linux-arm-$VERSION.tar.gz keybase-linux-arm-$VERSION
 }
@@ -50,7 +52,9 @@ function main() {
     mkdir -p target
     DownloadKeybase
     CheckoutVersionAndPath
+    echo "Building Keybase"
     BuildGO
+    echo "Building GUI"
     BuildGUI
     CopyExtras
     Package
