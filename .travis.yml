@@ -2,6 +2,9 @@ language: go
 go:
   - "1.14.x"
 
+node_js:
+  - "11"
+
 os:
   - linux
 
